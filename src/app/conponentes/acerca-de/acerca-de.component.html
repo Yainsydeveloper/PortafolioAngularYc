@@ -1,0 +1,335 @@
+<!-- datos -->
+
+<main class="container">
+    <div class="bg-light p-2 rounded">
+    <div class="row text-center">
+      <div id="info-data" class="lista col-4" *ngIf="usuario">
+        <ul id="info-detaye">
+          <h1>{{usuario.nombre}} {{usuario.apellido}}</h1>      
+          <div id="info-conpany">{{usuario.descripcion}}</div>
+          <div id="info-contacts" *ngIf="usuario" >
+            <span >{{usuario.titulo}}</span>
+            <br>
+            <br>
+            <span><a><i><b>Informacion de contacto</b></i></a></span>
+            <br>
+          </div>
+          <div class="cajacontacto">
+            <h3><b></b></h3>
+            <h2>
+              <a class="fa-brands fa-whatsapp"  href="https://wa.me/541136770583" target="_blank"></a>            
+              <a class="fa-brands fa-linkedin"  href="https://www.linkedin.com/in/crespoleonel35" target="_blank" ></a>
+              <a class="fa-brands fa-github" href="https://github.com/lacbj?tab=repositories" target="_blank"></a>
+            </h2>
+          </div>
+          </ul>
+        </div>
+    
+             <!-- Reflexion y Reloj comentado-->
+        <article class="col-4" *ngIf="miPorfolio"> 
+          <img [src]="miPorfolio.reflex" alt="error" class="reflexion"> 
+          <!-- Reloj
+          <section class="reloj_contenedor">    
+            <div class="wrap">
+              <div class="widget">
+                <div class="fecha">
+                  <p class="diasemana" id="diasemana"></p>
+                  <p class="dia" id="dia"></p>
+                  <p>de</p>
+                  <p class="mes" id="mes"></p>
+                  <p>del</p>
+                  <p class="year" id="year"></p>
+              </div>
+              <div class="reloj">
+                <p id="horas" class="horas"></p>
+                <p>:</p>
+                <p id="minutos" class="minutos"></p>
+                <p>:</p>
+                <div class="caja-segundos">
+                  <p id="ampm" class="ampm"></p>
+                  <p id="segundos" class="segundos"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          </section> --> 
+        </article>
+  
+            <!-- Datos y boton editar-->
+        <article  class="col-4"   *ngIf="usuario" >
+          <img class="foto-acerca-de" [src]="usuario.fotoPerfil"
+          alt="Leonel Crespo">
+          <h3>{{usuario.titulo}}</h3>        
+          <h3>{{usuario.empresa}}</h3>
+  
+          <div id="main-container">
+            <div class="bg-light p-1 rounded">             
+                     <!-- button editar lapiz -->
+              <div class="bg-light text-right" >
+                          <a  data-bs-toggle="modal" 
+                          (click)="onOpenModal('edit',usuario)"
+                          data-bs-target="#editUsuarioModal"
+                           class="btn btn-primary tooltips"
+                           data-placement="top"
+                           data-toggle="tooltip"
+                           data-original-title="Edit"
+                           ><i class="fa fa-pen"></i></a>
+                     <!-- button delete (No esta en uso)
+                         <a data-bs-toggle="modal" 
+                          (click)="onOpenModal('delete',usuario)"
+                          data-bs-target="#deleteModalLabel5"
+          
+                          class="btn btn-secondary tooltips"
+                          data-placement="top"
+                          data-toggle="tooltip"
+                          data-original-title="delete"
+                          ><i class="fa fa-times"></i></a>x-->
+                          </div>             
+                      </div> 
+                    </div>
+        </article>
+  
+      </div>                 
+           <!-- modal añadir Usuario (NO esta en uso este boton)-->
+          <div class="modal fade" 
+          id='addUsuarioModal'
+           tabindex="-1" 
+           role="dialog"    
+           aria-labelledby='addUsuarioModalLabel' 
+           aria-hidden="true" >
+        
+           <div class="modal-dialog" role="document">
+        
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id='addUsuarioModalLabel'> Añadir Usuario</h5>
+        
+              <button 
+              type="button" 
+              class="close"
+              data-bs-dismiss="modal" 
+              aria-label="Close"> 
+              <span aria-hidden="true">&times;</span>
+             </button>
+        
+           </div>
+           <div class="modal-body">
+             <form #addForm= "ngForm" (ngSubmit)="onAddUsuario(addForm)">
+            <div class="form-group">
+             <label for="titulo">Titulo</label>
+             <input type="text"
+             ngModel
+             name="titulo" 
+             class="form-control"
+              id="titulo" 
+              placeholder="Titulo" 
+             required>
+            </div>
+        
+                    
+               <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text"
+                ngModel
+                name="nombre"
+                 class="form-control" 
+                 id="nombre" 
+                 placeholder="Nombre" 
+                 required>
+               </div>
+          
+               <div class="form-group">
+                <label for="apellido">Apellido</label>
+                <input type="text"
+                ngModel
+                name="apellido" 
+                class="form-control" 
+                id="apellido" 
+                placeholder="Apellido" 
+                required>        
+               </div>
+  
+               <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <input type="text"
+                ngModel
+                name="descripcion" 
+                class="form-control" 
+                id="descripcion" 
+                placeholder="Descripcion" 
+                required>     
+               </div>
+    
+               <div class="form-group">
+                <label for="fotoPerfil">Logo de la empresa</label>
+                <input type="text"
+                ngModel
+                name="fotoPerfil" 
+                class="form-control" 
+                id="fotoPerfil" 
+                placeholder="Empresa" 
+                required>      
+               </div>
+               
+               <div class="modal-footer">
+                <button
+                type="button"
+                
+                aria-label="close"
+                id="add-usuario-form"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+                >
+                
+                Cerrar
+                </button>
+                <button
+                [disabled]="addForm.invalid"
+                type="submit"
+                class="btn btn-primary"
+                >
+                Añadir cambios
+                </button>
+               </div>
+                </form>
+              </div>
+            </div>
+        
+           </div>
+            
+          </div>
+        
+            <!-- Modal edit Usuario-->
+        
+         <div class="modal fade" 
+         id='editUsuarioModal'
+         tabindex="-1" 
+         role="dialog"    
+         aria-labelledby='usuarioEditModalLabel' 
+         aria-hidden="true" >
+        
+         <div class="modal-dialog" role="document">
+        
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" 
+              id='updateUsuarioModalLabel'
+              > Edit Usuario  {{editUsuario?.titulo}}</h5>
+        
+            <button 
+            type="button" 
+            class="close"
+            data-bs-dismiss="modal" 
+            aria-label="Close"> 
+            <span aria-hidden="true">&times;</span>
+           </button> 
+        
+           </div>
+            <div class="modal-body">
+              <form #editForm= "ngForm">
+             <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input type="text"
+              ngModel="{{editUsuario?.nombre}}"
+              name="nombre" 
+              class="form-control"
+               id="nombre"
+               aria-describedby="emailHelp" 
+               placeholder="Nombre" 
+              >
+             </div>
+        
+              <input type="hidden"
+              ngModel="{{editUsuario?.id}}"
+              name="id"
+               class="form-control" 
+               id="id" 
+               placeholder="" 
+               >
+             
+        
+             <div class="form-group">
+              <label for="apellido">Apellido</label>
+              <input type="text"
+              ngModel="{{editUsuario?.apellido}}"
+              name="apellido" 
+              class="form-control" 
+              id="apellido" 
+              placeholder="Apellido" 
+              >
+        
+             </div>           
+        
+             <div class="form-group">
+              <label for="descripcion">Profesión</label>
+              <input type="text"
+              ngModel="{{editUsuario?.descripcion}}"
+              name="descripcion" 
+              class="form-control" 
+              id="descripcion" 
+              placeholder="Descripcion" 
+              >      
+             </div>
+  
+             <div class="form-group">
+              <label for="name">Titulo o Cargo</label>
+              <input type="text"
+              ngModel="{{editUsuario?.titulo}}"
+              name="titulo" 
+              class="form-control"
+               id="titulo"
+               aria-describedby="emailHelp" 
+               placeholder="titulo" 
+              >
+             </div>
+            
+        
+             <div class="form-group">
+              <label for="empresa">Nombre de la empresa</label>
+              <input type="text"
+              ngModel="{{editUsuario?.empresa}}"
+              name="empresa"
+               class="form-control" 
+               id="empresa" 
+               placeholder="Empresa" 
+               >
+             </div>
+  
+             <div class="form-group">
+              <label for="fotoPerfil">Logo de la empresa</label>
+              <input type="text"
+              ngModel="{{editUsuario?.fotoPerfil}}"
+              name="fotoPerfil" 
+              class="form-control" 
+              id="fotoPerfil" 
+              placeholder="Empresa" 
+              >      
+             </div>
+        
+             <div class="modal-footer">
+              <button
+              type="button"
+              id=""
+              data-bs-dismiss="modal"
+              class="btn btn-secondary"
+              >
+              close
+              </button>
+              <button
+              (click)="onUpdateUsuario(editForm.value)"
+              data-bs-dismiss="modal"
+              class="btn btn-primary"
+              >
+              Guardar  cambios
+              </button>
+             </div>
+              </form>
+            </div>
+          </div>
+        
+          </div>
+          
+          
+         </div>
+   
+  

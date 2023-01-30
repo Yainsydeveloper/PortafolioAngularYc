@@ -1,0 +1,34 @@
+.foto-proyectos{
+      
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+  
+}
+
+@media screen  and (max-width: 500px){
+    .row{
+      flex-direction: column;
+      align-content:space-around;
+    }
+    .container{ 
+      text-align: center;
+    
+      
+    }
+    .foto-proyectos{
+          
+      height: 81px;
+      width: 81px;
+      border-radius: 50%;
+    
+    }
+    
+    .foto-estudios{
+          
+      height: 81px;
+      width: 81px;
+    
+    }
+    
+    }

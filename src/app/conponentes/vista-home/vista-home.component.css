@@ -1,0 +1,186 @@
+/*aceca-de*/
+.foto-acerca-de{
+      
+  height: 81px;
+  width: 81px;
+
+}
+.reflexion{
+  height: 210px;
+  width: 200px;
+ 
+}
+/*encabezado*/
+.logo_arg{
+    /*margin-left: 20%;*/
+      width: 100px;
+      height: 100px;
+  }
+  .redes{
+    margin-left: 50%;
+  
+  }
+  .foto-scale {
+      
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+.foto{
+    position:absolute;
+    
+    top: 38%;
+    left: 10%;
+}
+/*estudios*/
+.foto-estudios{
+      
+  height: 100px;
+  width: 100px;
+
+}
+/*experiencia*/
+/*progreso*/
+/*
+*
+* ==========================================
+* CLASES PARA CIRCULOS DE PROGRESO
+* ==========================================
+*
+*/
+
+.progress {
+  width: 150px;
+  height: 150px;
+  background: none;
+  position: relative;
+}
+
+.progress::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 6px solid #eee;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress>span {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.progress .progress-left {
+  left: 0;
+}
+
+.progress .progress-bar {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border-width: 6px;
+  border-style: solid;
+  position: absolute;
+  top: 0;
+}
+
+.progress .progress-left .progress-bar {
+  left: 100%;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border-left: 0;
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+
+.progress .progress-right {
+  right: 0;
+}
+
+.progress .progress-right .progress-bar {
+  left: -100%;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-right: 0;
+  -webkit-transform-origin: center right;
+  transform-origin: center right;
+}
+
+.progress .progress-value {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSE
+* ==========================================
+*
+*/
+
+body {
+  background: #ff7e5f;
+  background: -webkit-linear-gradient(to right, #ff7e5f, #feb47b);
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  min-height: 100vh;
+}
+
+.rounded-lg {
+  border-radius: 1rem;
+}
+
+.text-gray {
+  color: #aaa;
+}
+
+div.h4 {
+  line-height: 1rem;
+}
+/*proyectos*/
+
+.foto-proyectos{
+      
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+
+}
+.row{
+  flex-direction: row;
+  
+}
+
+@media screen  and (max-width: 500px){
+.row{
+  flex-direction: column;
+  align-content:space-around;
+}
+.container{ 
+  text-align: center;
+
+  
+}
+.foto-proyectos{
+      
+  height: 81px;
+  width: 81px;
+  border-radius: 50%;
+
+}
+
+.foto-estudios{
+      
+  height: 81px;
+  width: 81px;
+
+}
+
+}

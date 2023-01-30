@@ -1,0 +1,333 @@
+
+   <!--Barras de Progreso 
+   <div>
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+      aria-valuemin="0" aria-valuemax="100" style="width:40%">
+        40% Complete (success)
+      </div>
+    </div>
+    
+    <div class="progress">
+      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50"
+      aria-valuemin="0" aria-valuemax="100" style="width:50%">
+        50% Complete (info)
+      </div>
+    </div>
+    
+    <div class="progress">
+      <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
+      aria-valuemin="0" aria-valuemax="100" style="width:60%">
+        60% Complete (warning)
+      </div>
+    </div>
+    
+    <div class="progress">
+      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70"
+      aria-valuemin="0" aria-valuemax="100" style="width:70%">
+        70% Complete (danger)
+      </div>
+    </div>
+  </div>-->
+ 
+<!--HABILIDADES -->
+<main class="container">
+    <div class="bg-light p-5 rounded">
+     <h1>Habilidades</h1>
+  
+     <div class="text-right">
+     <button type="button" class="btn" 
+     style="background:rgb(120, 164, 230)"
+     data-bs-toggle="modal"  (click)="onOpenModal('add')" data-bs-target="#addProgresoModal"> 
+     <a class="nav-link" style="color:#fff">
+     Añadir Progreso<span class="sr-only">(current)</span></a>
+     </button>
+     </div>
+   
+     <div id="main-container">
+      <div class="d-flex  flex-wrap">
+        
+     <div class=" flex-item bg-light p-1 rounded" *ngFor="let progreso of progresos" > 
+      
+         <!-- Comienza la cuadricula -->      
+          <div class="bg-white rounded-lg p-5 shadow">
+  
+            <!-- button editar lapiz y delete-->
+           <div class="text-right bg-light" >   
+            <a  data-bs-toggle="modal" 
+            (click)="onOpenModal('edit',progreso)"
+            data-bs-target="#editProgresoModal"
+             class="btn tooltips"
+             style="background:rgb(120, 164, 230)"
+             data-placement="top"
+             data-toggle="tooltip"
+             data-original-title="Edit"
+             ><i class="fa fa-pen"></i></a>
+              <!-- button delete x -->
+           <a data-bs-toggle="modal" 
+            (click)="onOpenModal('delete',progreso)"
+            data-bs-target="#deleteModalLabel2"
+            class="btn btn-secondary tooltips"
+            data-placement="top"
+            data-toggle="tooltip"
+            data-original-title="delete"
+            ><i class="fa fa-times"></i></a>
+            </div> 
+                 <br> 
+            <h4 class=" font-weight-bold text-center mb-4">{{progreso.tituloPro}}</h4>
+    
+            <!-- Progress bar 1 -->
+            <div class="progress mx-auto" data-value = "100">
+              <span class="progress-left">
+                            <span class="progress-bar border-primary"></span>
+              </span>
+              <span class="progress-right">
+                            <span class="progress-bar border-primary"></span>
+              </span>
+              <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                <div class="h2 font-weight-bold">{{progreso.porcentajePro}} <sup class="small">%</sup></div>
+              </div>
+            </div>
+           </div> 
+          </div>
+        </div>            
+      
+  
+  
+  
+      
+       <!-- modal añadir PROGRESO-->
+     <div class="modal fade" 
+     id='addProgresoModal'
+      tabindex="-1" 
+      role="dialog"    
+      aria-labelledby='addProgresoModalLabel' 
+      aria-hidden="true" >
+   
+      <div class="modal-dialog" role="document">
+   
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title" id='addProgresoModalLabel'> Añadir Progreso</h5>
+   
+         <button 
+         type="button" 
+         class="close"
+         data-bs-dismiss="modal" 
+         aria-label="Close"> 
+         <span aria-hidden="true">&times;</span>
+        </button> 
+   
+      </div>
+      <div class="modal-body">
+        <form #addForm= "ngForm" (ngSubmit)="onAddProgreso(addForm)">
+       <div class="form-group">
+        <label for="tituloPro">Titulo</label>
+        <input type="text"
+        ngModel
+        name="tituloPro" 
+        class="form-control"
+         id="tituloPro" 
+         placeholder="Titulo" 
+        required>
+       </div>
+   
+          
+   
+          
+   
+           <div class="form-group"> 
+           <label for="porcentajePro">Porcentaje</label>
+           <input type="number"
+           ngModel
+           name="porcentajePro" 
+           class="form-control" 
+           id="porcentajePro" 
+           placeholder="Porcentaje sin comas ni puntos" 
+           required>
+   
+          </div>
+   
+          <div class="modal-footer">
+           <button
+           type="button"
+           
+           aria-label="close"
+           id="add-progreso-form"
+           class="btn btn-secondary"
+           data-bs-dismiss="modal"
+           >
+           
+           Cerrar
+           </button>
+           <button
+           [disabled]="addForm.invalid"
+           type="submit"
+           class="btn btn-primary"
+           >
+           Añadir cambios
+           </button>
+          </div>
+           </form>
+         </div>
+       </div>
+   
+      </div>
+       
+     </div>
+   
+       <!-- Modal edit PROGRESO -->
+   
+    <div class="modal fade" 
+    id='editProgresoModal'
+    tabindex="-1" 
+    role="dialog"    
+    aria-labelledby='progresoEditModalLabel' 
+    aria-hidden="true" >
+   
+    <div class="modal-dialog" role="document">
+   
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" 
+         id='updateProgresoModalLabel'
+         > Edit Progreso  {{editProgreso?.tituloPro}}</h5>
+   
+       <button 
+       type="button" 
+       class="close"
+       data-bs-dismiss="modal" 
+       aria-label="Close"> 
+       <span aria-hidden="true">&times;</span>
+      </button> 
+   
+      </div>
+       <div class="modal-body">
+         <form #editForm= "ngForm">
+        <div class="form-group">
+         <label for="name">Titulo</label>
+         <input type="text"
+         ngModel="{{editProgreso?.tituloPro}}"
+         name="tituloPro" 
+         class="form-control"
+          id="tituloPro"
+          aria-describedby="emailHelp" 
+          placeholder="titulo" 
+         >
+        </div>
+   
+         <input type="hidden"
+         ngModel="{{editProgreso?.idPro}}"
+         name="idPro"
+          class="form-control" 
+          id="idPro" 
+          placeholder="" 
+          >
+                
+        <div class="form-group">
+         <label for="porcentajePro">Porcentaje</label>
+         <input type="number"
+         ngModel="{{editProgreso?.porcentajePro}}"
+         name="porcentajePro" 
+         class="form-control" 
+         id="porcentajePro" 
+         placeholder="Porcentaje sin comas ni puntos" 
+         >
+   
+        </div>
+   
+        <div class="modal-footer">
+         <button
+         type="button"
+         id=""
+         data-bs-dismiss="modal"
+         class="btn btn-secondary"
+         >
+         close
+         </button>
+         <button
+         (click)="onUpdateProgreso(editForm.value)"
+         data-bs-dismiss="modal"
+         class="btn btn-primary"
+         >
+         Guardar  cambios
+         </button>
+        </div>
+         </form>
+       </div>
+     </div>
+   
+     </div>
+     
+     
+    </div>
+      <!-- modal delete PROGRESO-->
+   
+   <div  
+    class="modal fade" 
+    id='deleteModalLabel2'
+    tabindex="-1" 
+    role="dialog"    
+    aria-labelledby='deleteModalLabel2' 
+    aria-hidden="true">
+   
+    <div class="modal-dialog" role="document">
+   
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id='deleteModalLabel2'>Delete Progreso</h5>
+   
+       <button 
+       type="button" 
+       class="close"
+       data-bs-dismiss="modal" 
+       aria-label="Close"> 
+       <span aria-hidden="true">&times;</span>
+      </button> 
+   
+    </div>
+       <div class="modal-body">
+         <p>
+       ¿esta seguro que deseas eliminar esta habilidad?
+       {{deleteProgreso?.tituloPro}}?
+   
+         </p>
+   
+      
+   
+        <div class="modal-footer">
+         <button
+         type="button"
+         
+         class="btn btn-secondary"
+         data-bs-dismiss="modal"
+         >
+         NO
+         </button>
+         <button
+         (click)="onDeleteProgreso(deleteProgreso!.idPro)"
+         class="btn btn-primary"       
+        data-bs-dismiss="modal"
+         >
+         Si 
+         </button>
+       </div>
+        </div>
+       
+         
+       </div>
+     </div>
+   
+     </div>
+   
+      <!--mensaje -->
+     <div *ngIf="progresos?.length == 0" class="col-lg-12 col-mg-12 col-xl-12">
+       <div class="alert alert-info" role="alert" >
+         <h4 class="alert-heading">NO HAY HABILIDADES!</h4>
+         <P>HABILIDADES NO ENCONTRADAS</P>
+       </div>
+     </div>
+    </div>
+  
+  
+  

@@ -1,0 +1,38 @@
+{
+    
+    
+        "image"    :"assets/img/logo-arg-programa.png",
+        "reflex"    :"assets/img/reflexion.png",
+     "whatsapp"    :"https://wa.me/541136770583",
+     "linkedin"    : "https://www.linkedin.com/in/crespoleonel35",
+       "github"    : "https://github.com/lacbj?tab=repositories",
+          "img"    : "assets/img/leo.jpg",
+          "java"    : "assets/img/logoJava.jpg",
+          "git"    : "assets/img/logoGit.jpg",
+          "javaScript": "assets/img/logoJavaScript.jpg",
+          "bootstrap": "assets/img/logoBootstrap.jpg",
+          "angular": "assets/img/logoAngular.jpg",
+          "css"    : "assets/img/logoCSS.jpg",
+     "carrusel"    :  "assets/img/el trabajo-en-equipo.webp",
+    "carrusel1"    : "assets/img/fotoblogene2709.png",
+    "carrusel2"    :"assets/img/trabajo-en-equipo.jpeg",
+    "username"     :"leonel",
+  "usercomtraseña" :"1234",
+
+
+
+
+"personal": {
+  "nombre":"Leonel Crespo",
+  "posicion": "programador",
+  "ubicacion": "Buenos Aires ( Argentina)"
+
+
+
+}
+
+
+}
+
+
+

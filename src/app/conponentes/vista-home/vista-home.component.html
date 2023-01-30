@@ -1,0 +1,396 @@
+<!-- ENCABEZADO
+    navegador 
+-->
+
+<nav class="navbar navbar-dark mb-1" *ngIf="miPorfolio">
+    <div class="container-fluid">
+      <!-- logo_arg -->
+      <article>
+        <div class="row">
+        <img [src]="miPorfolio.java" alt="error" class="logo_arg" class="col-2"/>
+        <img [src]="miPorfolio.javaScript" alt="error" class="logo_arg" />
+        <img [src]="miPorfolio.git" alt="error" class="logo_arg" />
+        <img [src]="miPorfolio.bootstrap" alt="error" class="logo_arg" />
+        <img [src]="miPorfolio.ccs" alt="error" class="logo_arg" />
+        <img [src]="miPorfolio.angular" alt="error" class="logo_arg" />
+
+        </div>
+        
+      </article>
+      <!-- botones de contacto redes sociales-->
+      <h2 class="redes">
+        <a
+          class="fa-brands fa-whatsapp"
+          [href]="miPorfolio.whatsapp"
+          target="_blank"
+        ></a>
+        <a
+          class="fa-brands fa-linkedin"
+          [href]="miPorfolio.linkedin"
+          target="_blank"
+        ></a>
+        <a
+          class="fa-brands fa-github"
+          [href]="miPorfolio.github"
+          target="_blank"
+        ></a>
+      </h2>
+       <!-- botom del signin -->      
+       <div>
+        <button type="button" class="btn btn-link"> <a href="#" (click)= "registrarse()"> <span class="text-primary fs-4" >Crear cuenta</span></a></button>     
+       </div>
+        <!-- boton del login-->
+       <div>
+        <button type="button" class="btn btn-primary "><a href="#" (click)= "loguearse()"><span class="text-light"> Iniciar Seccion</span></a></button>       
+       </div>
+      <!-- fin de botones -->
+    </div>
+  </nav>
+  
+  <div id="main-container">
+    <div class="bg-light p-5 rounded" *ngIf="encabezado">
+      <!-- carrussel -->
+      <div
+        id="carouselExampleCaptions"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              [src]="encabezado.img1Enc"
+              class="d-block w-100"
+              alt="..."
+              height="300px"
+            />
+            <div class="carousel-caption d-none d-md-block"></div>
+          </div>
+          <div class="carousel-item">
+            <img
+              [src]="encabezado.img2Enc"
+              class="d-block w-100"
+              alt="..."
+              height="300px"
+            />
+            <div class="carousel-caption d-none d-md-block"></div>
+          </div>
+          <div class="carousel-item">
+            <img
+              [src]="encabezado.img3Enc"
+              class="d-block w-100"
+              alt="..."
+              height="300px"
+            />
+            <div class="carousel-caption d-none d-md-block"></div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+  
+      <!-- Foto de perfil los dato vienen de JSON-->
+      <div id="img" *ngIf="miPorfolio">
+        <article class="foto">
+          <img class="foto-scale" [src]="miPorfolio.img" alt="LeonelCrespo" />
+        </article>
+      </div>
+    </div>
+  </div>
+  <!-- ------------ fin de encabezado-->
+  
+  <!-- componente acerca de -->
+  
+  <main class="container text-center">
+    <div class="bg-light p-2 rounded">
+      <div class="row text-center">
+        <div id="info-data" class="lista col-4" *ngIf="usuario">
+          <ul id="info-detaye">
+            <h1>{{ usuario.nombre }} {{ usuario.apellido }}</h1>
+            <div id="info-conpany">{{ usuario.descripcion }}</div>
+            <div id="info-contacts" *ngIf="usuario">
+              <span>{{ usuario.titulo }}</span>
+              <br />
+              <br />
+              <span
+                ><a
+                  ><i><b>Información de contacto</b></i></a
+                ></span
+              >
+              <br />
+            </div>
+            <div class="cajacontacto">
+              <h3><b></b></h3>
+              <h2>
+                <a
+                  class="fa-brands fa-whatsapp"
+                  href="https://wa.me/541136770583"
+                  target="_blank"
+                ></a>
+                <a
+                  class="fa-brands fa-linkedin"
+                  href="https://www.linkedin.com/in/crespoleonel35"
+                  target="_blank"
+                ></a>
+                <a
+                  class="fa-brands fa-github"
+                  href="https://github.com/lacbj?tab=repositories"
+                  target="_blank"
+                ></a>
+              </h2>
+            </div>
+          </ul>
+        </div>
+  
+        <!-- Reflexion ------------->
+        <article class="col-4" *ngIf="miPorfolio">
+          <img [src]="miPorfolio.reflex" alt="error" class="reflexion" />
+        </article>
+  
+        <!-- Datos personales-->
+        <article class="col-4" *ngIf="usuario">
+          <img
+            class="foto-acerca-de"
+            [src]="usuario.fotoPerfil"
+            alt="Leonel Crespo"
+          />
+          <h3>{{ usuario.titulo }}</h3>
+          <h3>{{ usuario.empresa }}</h3>
+        </article>
+      </div>
+    </div>
+  </main>
+  <!-- ----------fin de acerca de  -->
+  
+  <!----------estudios -->
+  
+  <br />
+  <br />
+  <!--Fin estudios-->
+  <!-- EDUCACION -->
+  <main class="container">
+    <div class="bg-light p-5 rounded">
+      <h1>Educación</h1>
+  
+      <div id="main-container">
+        <div class="bg-light p-5 rounded" *ngFor="let educacion of educaciones">
+          <!-- Comienza la cuadricula -->
+          <div class="row">
+            <div class="col-3">
+              <img class="foto-estudios" [src]="educacion.imagenEdu" />
+            </div>
+            <div class="col-6">
+              <h2>{{ educacion.tituloEdu }}</h2>
+              {{ educacion.descEdu }}
+            </div>
+            <!-- button editar lapiz -->
+            <div class="col-3 text-right bg-light">
+              <h3>{{ educacion.fechaEdu }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--mensaje -->
+      <div *ngIf="educaciones?.length == 0" class="col-lg-12 col-mg-12 col-xl-12">
+        <div class="alert alert-info" role="alert">
+          <h4 class="alert-heading">NO HAY EDUCACINES!</h4>
+          <P>EDUCACIONES NO ENCONTRADAS</P>
+        </div>
+      </div>
+    </div>
+  </main>
+      <!-- ---------------- FIN DE ESTUDIOS -->
+  
+      <!-- experiencia-------------- -->
+  
+      <br />
+      <br />
+      <main class="container">
+        <div class="bg-light p-5 rounded">
+          <h1>Experiencia</h1>
+          <div id="main-container">
+            <div
+              class="bg-light p-5 rounded"
+              *ngFor="let experiencia of experiencias"
+            >
+              <!-- Comienza la cuadricula -->
+              <div class="row">
+                <div class="col-3">
+                  <img class="foto-estudios" [src]="experiencia.imagenExp" />
+                </div>
+                <div class="col-6">
+                  <h2>{{ experiencia.tituloExp }}</h2>
+                  {{ experiencia.descExp }}
+                </div>
+  
+                <div class="col-3 text-right bg-light">
+                  <h3>{{ experiencia.fechaExp }}</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--mensaje -->
+          <div
+            *ngIf="experiencias?.length == 0"
+            class="col-lg-12 col-mg-12 col-xl-12"
+          >
+            <div class="alert alert-info" role="alert">
+              <h4 class="alert-heading">NO HAY EXPERIENCIAS!</h4>
+              <P>EXPERIENCIAS NO ENCONTRADAS</P>
+            </div>
+          </div>
+        </div>
+      </main>
+  
+          <!------------------ FIN DE EXPERIENCIA -->
+  
+          <!-- PROYECTO -->
+  
+          <br />
+          <br />
+          <main class="container">
+            <div class="bg-light p-5 rounded">
+              <h1>Proyectos</h1>
+              <div id="main-container">
+                <div
+                  class="bg-light p-5 rounded"
+                  *ngFor="let proyecto of proyectos"
+                >
+                  <!-- Comienza la cuadricula -->
+                  <div class="row">
+                    <div class="col-3">
+                      <img
+                        class="foto-proyectos"
+                        [src]="proyecto.imagenProyect"
+                      />
+                    </div>
+                    <div class="col-6">
+                      <h2>{{ proyecto.tituloProyect }}</h2>
+                      {{ proyecto.descProyect }}
+                      <div>
+                        <button type="button" class="btn btn-primary p-1">
+                          <a
+                            class="nav-link"
+                            style="color: #fff"
+                            href="https://github.com/lacbj"
+                          >
+                            Ver Proyecto</a
+                          >
+                        </button>
+                      </div>
+                    </div>
+                    <!-- button editar lapiz -->
+                    <div class="col-3 text-right bg-light">
+                      <h3>{{ proyecto.fechaProyect }}</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--mensaje -->
+              <div
+                *ngIf="proyectos?.length == 0"
+                class="col-lg-12 col-mg-12 col-xl-12"
+              >
+                <div class="alert alert-info" role="alert">
+                  <h4 class="alert-heading">NO HAY PROYECTOS!</h4>
+                  <P>PROYECTOS NO ENCONTRADOS</P>
+                </div>
+              </div>
+            </div>
+          </main>
+  
+              <!-- ------FIN DE PROYECTOS------->
+  
+              <!--HABILIDADES -->
+  
+              <main class="container">
+                <div class="bg-light p-5 rounded">
+                  <h1>Habilidades</h1>
+  
+                  <div id="main-container">
+                    <div class="d-flex flex-wrap">
+                      <div
+                        class="flex-item bg-light p-1 rounded"
+                        *ngFor="let progreso of progresos"
+                      >
+                        <!-- Comienza la cuadricula -->
+                        <div class="bg-white rounded-lg p-5 shadow">
+                          <br />
+                          <h4 class="font-weight-bold text-center mb-4">
+                            {{ progreso.tituloPro }}
+                          </h4>
+  
+                          <!-- Progress bar 1 -->
+                          <div class="progress mx-auto" data-value="100">
+                            <span class="progress-left">
+                              <span class="progress-bar border-primary"></span>
+                            </span>
+                            <span class="progress-right">
+                              <span class="progress-bar border-primary"></span>
+                            </span>
+                            <div
+                              class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center"
+                            >
+                              <div class="h2 font-weight-bold">
+                                {{ progreso.porcentajePro }}
+                                <sup class="small">%</sup>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <!--mensaje -->
+                    <div
+                      *ngIf="progresos?.length == 0"
+                      class="col-lg-12 col-mg-12 col-xl-12"
+                    >
+                      <div class="alert alert-info" role="alert">
+                        <h4 class="alert-heading">NO HAY HABILIDADES!</h4>
+                        <P>HABILIDADES NO ENCONTRADAS</P>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </main>
+            
+         
+  

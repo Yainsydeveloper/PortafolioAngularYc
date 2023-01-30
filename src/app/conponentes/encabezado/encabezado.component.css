@@ -1,0 +1,51 @@
+.logo_arg{
+    margin-left: 20%;
+      width: 200px;
+      height: 80px;
+  }
+  .redes{
+    margin-left: 50%;
+  
+  }
+  .foto-scale {
+      
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+.foto{
+    position:absolute;
+    
+    top: 38%;
+    left: 10%;
+}
+
+@media screen  and (max-width: 500px){
+  .row{
+    flex-direction: column;
+    align-content:space-around;
+  }
+  .container{ 
+    text-align: center;
+  
+    
+  }
+  .foto-proyectos{
+        
+    height: 81px;
+    width: 81px;
+    border-radius: 50%;
+  
+  }
+  
+  .foto-estudios{
+        
+    height: 81px;
+    width: 81px;
+  
+  }
+  
+  }
+
+
+
