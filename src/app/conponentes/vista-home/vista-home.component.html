@@ -4,48 +4,73 @@
 
 <nav class="navbar navbar-dark mb-1" *ngIf="miPorfolio">
     <div class="container-fluid">
-      <!-- logo_arg -->
-      <article>
+      <div class="row">
+      
+      <article class="col-6">
+        <!--logos de tecnologias -->
         <div class="row">
         <img [src]="miPorfolio.java" alt="error" class="logo_arg" class="col-2"/>
-        <img [src]="miPorfolio.javaScript" alt="error" class="logo_arg" />
-        <img [src]="miPorfolio.git" alt="error" class="logo_arg" />
-        <img [src]="miPorfolio.bootstrap" alt="error" class="logo_arg" />
-        <img [src]="miPorfolio.ccs" alt="error" class="logo_arg" />
-        <img [src]="miPorfolio.angular" alt="error" class="logo_arg" />
-
-        </div>
-        
+        <img [src]="miPorfolio.javaScript" alt="error" class="logo_arg" class="col-2"/>
+        <img [src]="miPorfolio.git" alt="error" class="logo_arg"class="col-2" />
+        <img [src]="miPorfolio.bootstrap" alt="error" class="logo_arg"class="col-2" />
+        <img [src]="miPorfolio.css" alt="error" class="logo_arg"class="col-2" />
+        <img [src]="miPorfolio.angular" alt="error" class="logo_arg"class="col-2" />
+        </div>        
       </article>
       <!-- botones de contacto redes sociales-->
-      <h2 class="redes">
-        <a
-          class="fa-brands fa-whatsapp"
-          [href]="miPorfolio.whatsapp"
-          target="_blank"
-        ></a>
-        <a
-          class="fa-brands fa-linkedin"
-          [href]="miPorfolio.linkedin"
-          target="_blank"
-        ></a>
-        <a
-          class="fa-brands fa-github"
-          [href]="miPorfolio.github"
-          target="_blank"
-        ></a>
-      </h2>
+      <article class="col-2" >
+        <h2 class="redes">
+          <a
+            class="fa-brands fa-whatsapp"
+            [href]="miPorfolio.whatsapp"
+            target="_blank"
+          ></a>
+          <a
+            class="fa-brands fa-linkedin"
+            [href]="miPorfolio.linkedin"
+            target="_blank"
+          ></a>
+          <a
+            class="fa-brands fa-github"
+            [href]="miPorfolio.github"
+            target="_blank"
+          ></a>
+        </h2>
+      </article>
+      <article class="col-2" >
        <!-- botom del signin -->      
        <div>
         <button type="button" class="btn btn-link"> <a href="#" (click)= "registrarse()"> <span class="text-primary fs-4" >Crear cuenta</span></a></button>     
        </div>
-        <!-- boton del login-->
-       <div>
-        <button type="button" class="btn btn-primary "><a href="#" (click)= "loguearse()"><span class="text-light"> Iniciar Seccion</span></a></button>       
-       </div>
+      </article>
+      <article class="col-2">
+       <!-- boton del login-->
+        <div>
+          <button type="button" class="btn btn-primary "><a href="#" (click)= "loguearse()"><span class="text-light"> Iniciar Seccion</span></a></button>       
+        </div>
+      </article>    
+    </div> 
       <!-- fin de botones -->
     </div>
   </nav>
+  <ul class="menu">
+     <li class="menu-item">
+       <a href="#infoGeneral">General</a>                        
+     </li>
+     <div class="menu-item" >
+      <a href="#educacion">Educación</a>    
+     </div>
+     <div class="menu-item" >
+      <a href="#experiencia">Experiencia</a>    
+     </div>
+     <div class="menu-item" >
+      <a href="#proyectos">Proyectos</a>    
+     </div>
+     <div class="menu-item" >
+      <a href="#habilidades">Habilidades</a>    
+     </div>
+
+    </ul>
   
   <div id="main-container">
     <div class="bg-light p-5 rounded" *ngIf="encabezado">
@@ -138,7 +163,7 @@
   
   <!-- componente acerca de -->
   
-  <main class="container text-center">
+  <main class="container text-center" id="infoGeneral">
     <div class="bg-light p-2 rounded">
       <div class="row text-center">
         <div id="info-data" class="lista col-4" *ngIf="usuario">
@@ -181,7 +206,7 @@
   
         <!-- Reflexion ------------->
         <article class="col-4" *ngIf="miPorfolio">
-          <img [src]="miPorfolio.reflex" alt="error" class="reflexion" />
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26261.342155903898!2d-58.41916859727339!3d-34.637835098818634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccb1160a8e62b%3A0x42f33f7586b05be1!2sParque%20Patricios%2C%20CABA!5e0!3m2!1ses!2sar!4v1675261994072!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </article>
   
         <!-- Datos personales-->
@@ -205,7 +230,7 @@
   <br />
   <!--Fin estudios-->
   <!-- EDUCACION -->
-  <main class="container">
+  <main class="container " id="educacion">
     <div class="bg-light p-5 rounded">
       <h1>Educación</h1>
   
@@ -242,7 +267,7 @@
   
       <br />
       <br />
-      <main class="container">
+      <main class="container" id="experiencia">
         <div class="bg-light p-5 rounded">
           <h1>Experiencia</h1>
           <div id="main-container">
@@ -285,7 +310,7 @@
   
           <br />
           <br />
-          <main class="container">
+          <main class="container" id="proyectos">
             <div class="bg-light p-5 rounded">
               <h1>Proyectos</h1>
               <div id="main-container">
@@ -340,7 +365,7 @@
   
               <!--HABILIDADES -->
   
-              <main class="container">
+              <main class="container" id="habilidades">
                 <div class="bg-light p-5 rounded">
                   <h1>Habilidades</h1>
   
